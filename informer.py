@@ -11,8 +11,14 @@ def getPage():
 		print("Found this!\n")
 		print(topic)
 		print("\n")
-		firstPara = str(soup.p)
-		text = re.split("<[^>]*>", firstPara)
+		#firstPara = str(soup.p)
+		text = []
+		c = 0
+		while not len(text):
+			para = soup.find_all("p")
+			text = re.split("<[^>]*>", str(para[c]))
+			c += 1
+
 		print("".join(text))
 		print("\n")
 		ch = input("Would you like to view this in your browser? Y/n\n")
